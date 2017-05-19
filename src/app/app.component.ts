@@ -9,7 +9,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title : string;
-  newTodo : Todo = new Todo();
   //private todoDataService: TodoDataService;
 
   constructor(private todoDataService: TodoDataService) { //因為寫在寫在建構子裡，可省略上下兩句
@@ -17,16 +16,15 @@ export class AppComponent {
     //this.todoDataService = todoDataService;
   }
 
-  toggleTodoComplete(todo) {
+  onToggleTodoComplete(todo: Todo) {
     this.todoDataService.toggleTodoComplete(todo);
   }
 
-  addTodo() {
-    this.todoDataService.addTodo(this.newTodo); //把newTodo喂給他
-    this.newTodo = new Todo();
+  onAddTodo(todo: Todo) {
+    this.todoDataService.addTodo(todo);
   }
 
-   removeTodo(todo) {
+  onRemoveTodo(todo: Todo) {
     this.todoDataService.deleteTodo(todo.id);
   }
 
